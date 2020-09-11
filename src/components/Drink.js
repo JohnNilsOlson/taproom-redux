@@ -5,16 +5,17 @@ import Button from "react-bootstrap/Button";
 
 function Drink(props){
 
-  const drink={
+  const button={
     borderRadius: 0,
     borderColor: "lightgray"
   }
   return (
     <React.Fragment>
-      <Button variant="outline-dark" style={drink} onClick = {() => props.whenDrinkClicked(props.id)} block>
-        <h3>{props.name} - {props.alcoholContent}%</h3>
+      <Button variant="outline-dark" style={button} onClick = {() => props.whenDrinkClicked(props.id)} block>
+        <h3>{props.name}</h3>
         <h5>{props.type}</h5>
         <h5>{props.brewer}</h5>
+        <p><em>{props.alcoholContent}% ABV</em></p>
       </Button>
     </React.Fragment>
   );

@@ -12,32 +12,55 @@ class DrinkControl extends React.Component {
     this.state = {
       formVisible: false,
       selectedDrink: null,
-      masterDrinkList: []
+      masterDrinkList: [
+        {
+          name: "Test",
+          type: "IPA",
+          brewer: "Test Brewery",
+          alcoholContent: 7.0,
+          description: "Blah blah blah.",
+          pintPrice: 1,
+          pitcherPrice: 3.50,
+          quantity: 124,
+          id: 1
+        },
+        {
+          name: "Test Two",
+          type: "Stout",
+          brewer: "Test Brewery",
+          alcoholContent: 8.0,
+          description: "Blah blah blah.",
+          pintPrice: 1,
+          pitcherPrice: 3.50,
+          quantity: 0,
+          id: 2
+        }
+      ]
     };
   }
 
   handlePint = (id) => {
-    const selectedDrink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
-    const newDrink = {...selectedDrink, quantity: selectedDrink.quantity -1}
+    const drink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
+    const newDrink = {...drink, quantity: drink.quantity -1}
     const newMasterDrinkList = this.state.masterDrinkList.map(function(drink) { return drink.id === id ? newDrink : drink; });
     console.log(newMasterDrinkList);
     this.setState(
       {
         masterDrinkList: newMasterDrinkList,
-        selectedDrink: null
+        selectedDrink: drink
       }
     )
   }
 
   handlePitcher = (id) => {
-    const selectedDrink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
-    const newDrink = {...selectedDrink, quantity: selectedDrink.quantity -4}
+    const drink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
+    const newDrink = {...drink, quantity: drink.quantity -4}
     const newMasterDrinkList = this.state.masterDrinkList.map(function(drink) { return drink.id === id ? newDrink : drink; });
     console.log(newMasterDrinkList);
     this.setState(
       {
         masterDrinkList: newMasterDrinkList,
-        selectedDrink: null
+        selectedDrink: drink
       }
     )
   }
@@ -77,6 +100,11 @@ class DrinkControl extends React.Component {
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
+
+    const button={
+      borderRadius: 0,
+      borderColor: "lightgray"
+    }
     
     if (this.state.selectedDrink != null) {
       currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} onClickingPint={this.handlePint} onClickingPitcher={this.handlePitcher} />
@@ -88,9 +116,10 @@ class DrinkControl extends React.Component {
       currentlyVisibleState = <DrinkList drinkList={this.state.masterDrinkList} onDrinkSelection={this.handleSelect} />
       buttonText = "Add New Tap";
     }
+    
     return (
       <React.Fragment>
-        <Button variant="outline-dark" onClick={this.handleClick} block>{buttonText}</Button>
+        <Button variant="outline-dark" style={button} onClick={this.handleClick} block>{buttonText}</Button>
         {currentlyVisibleState}
       </React.Fragment>
     );
