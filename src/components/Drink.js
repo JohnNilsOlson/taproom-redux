@@ -1,29 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Row from "react-bootstrap/Row"
+import Button from "react-bootstrap/Button";
 
 function Drink(props){
 
   const drink={
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    border: "solid",
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "lightgray",
-    padding: 10,
-    marginTop: 10
+    marginTop: 10,
+    borderColor: "lightgray"
   }
   return (
     <React.Fragment>
-      <Row style={drink}>
+      <Button variant="outline-dark" style={drink} onClick = {() => props.whenDrinkClicked(props.id)} block>
         <h3>{props.name} - {props.alcoholContent}%</h3>
         <h5>{props.type}</h5>
         <h5>{props.brewer}</h5>
-      </Row>
+      </Button>
     </React.Fragment>
   );
 }

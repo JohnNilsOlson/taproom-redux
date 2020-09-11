@@ -1,6 +1,7 @@
 import React from "react";
 import DrinkList from "./DrinkList";
 import NewDrinkForm from "./NewDrinkForm";
+import DrinkDetail from "./DrinkDetail";
 
 import Button from "react-bootstrap/Button";
 
@@ -10,8 +11,18 @@ class DrinkControl extends React.Component {
     super(props);
     this.state = {
       formVisible: false,
+      selectedDrink: null,
       masterDrinkList: []
     };
+  }
+
+  handleSelect = (id) => {
+    const selectedDrink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
+    this.setState(
+      {
+        selectedDrink: selectedDrink
+      }
+    );
   }
 
   handleNewDrink = (newDrink) => {
@@ -25,21 +36,30 @@ class DrinkControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState(prevState => (
-      {
+    if (this.state.selectedDrink != null) {
+      this.setState({
+        formVisible: false,
+        selectedDrink: null
+      });
+    } else {
+      this.setState(prevState => ({
         formVisible: !prevState.formVisible
-      }
-    ));
+      }));
+    }
   }
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisible) {
+    
+    if (this.state.selectedDrink != null) {
+      currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} />
+      buttonText = "Return to Tap List";
+    } else if (this.state.formVisible) {
       currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleNewDrink} />
       buttonText = "Return to Tap List";
     } else {
-      currentlyVisibleState = <DrinkList drinkList={this.state.masterDrinkList}/>
+      currentlyVisibleState = <DrinkList drinkList={this.state.masterDrinkList} onDrinkSelection={this.handleSelect} />
       buttonText = "Add New Tap";
     }
     return (

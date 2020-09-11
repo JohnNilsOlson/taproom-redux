@@ -10,10 +10,13 @@ function DrinkList(props) {
       <Container fluid>
         {props.drinkList.map((drink, index) =>
           <Drink
+            whenDrinkClicked = {props.onDrinkSelection}
             name={drink.name}
             brewer={drink.brewer}
             type={drink.type}
-            alcoholContent={drink.alcoholContent} />
+            alcoholContent={drink.alcoholContent}
+            id={drink.id}
+            key={drink.id}/>
         )}
       </Container>
     </React.Fragment>
@@ -21,7 +24,8 @@ function DrinkList(props) {
 }
 
 DrinkList.propTypes = {
-  drinkList: PropTypes.array
+  drinkList: PropTypes.array,
+  onDrinkSelection: PropTypes.func
 }
 
 export default DrinkList;

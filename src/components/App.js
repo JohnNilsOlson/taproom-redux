@@ -4,7 +4,6 @@ import DrinkControl from "./DrinkControl"
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 function App() {
 
@@ -14,9 +13,6 @@ function App() {
     alignItems: "center",
     justifyContent: "center",
     width: 600,
-    position: "fixed",
-    left: "50%",
-    transform: "translate(-50%)",
     marginTop: "5%"
   }
 
