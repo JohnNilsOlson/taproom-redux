@@ -12,8 +12,14 @@ September 11th, 2020 - Epicodus Week 17
 * React.js
 
 ## Specifications
-|Behavior|Input|Expected Output|
-|--------|-----|---------------|
+| Behavior | Input | Expected Output |
+| ---- | ---- | ---- |
+| User is presented with tap list. | - | View is list of drinks on tap. |
+| User clicks on drink name. | "Pale Ale" | View changes to "Pale Ale" details. Dynamic button changes to "Return to Drink List". |
+| User clicks to buy a pint of drink. | "Purchase" | Drink quantity is reduced by 1. |
+| User returns to drink list. | "Return to Drink List" | View changes from drink details to drink list. Dynamic button changes to "Add Drink" |
+| User clicks "Add Drink". | "Add Drink" | View changes to add drink form. Dynamic button changes to "Return to Drink List" |
+| User adds new drink. | "Submit" | Drink is added to list. View Changes to drink list. Dynamic button changes to "Add Drink" |
 
 ## Component Diagram
 ![Diagram of React Components](./public/taproom.png)
