@@ -9,12 +9,17 @@ import Col from "react-bootstrap/Col";
 function App() {
 
   const divCenter = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     width: 600,
     position: "fixed",
-    top: "15%",
     left: "50%",
-    transform: "translate(-50%, -50%)"
+    transform: "translate(-50%)",
+    marginTop: "5%"
   }
+
   return (
     <React.Fragment>
       <div style={divCenter}>
