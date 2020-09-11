@@ -1,4 +1,5 @@
 import React from "react";
+import DrinkList from "./DrinkList";
 
 import Container from "react-bootstrap/Container";
 
@@ -19,7 +20,7 @@ function DrinkControl() {
   }
     return (
       <Container fluid style={body}>
-        <h1>Placeholder</h1>
+        <DrinkList />
       </Container>
     );  
 }
