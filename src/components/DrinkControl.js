@@ -16,6 +16,19 @@ class DrinkControl extends React.Component {
     };
   }
 
+  handlePint = (id) => {
+    const selectedDrink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
+    const newDrink = {...selectedDrink, quantity: selectedDrink.quantity -1}
+    const newMasterDrinkList = this.state.masterDrinkList.map(function(drink) { return drink.id === id ? newDrink : drink; });
+    console.log(newMasterDrinkList);
+    this.setState(
+      {
+        masterDrinkList: newMasterDrinkList,
+        selectedDrink: null
+      }
+    )
+  }
+
   handleSelect = (id) => {
     const selectedDrink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
     this.setState(
@@ -53,7 +66,7 @@ class DrinkControl extends React.Component {
     let buttonText = null;
     
     if (this.state.selectedDrink != null) {
-      currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} />
+      currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} onClickingPint={this.handlePint} />
       buttonText = "Return to Tap List";
     } else if (this.state.formVisible) {
       currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleNewDrink} />
