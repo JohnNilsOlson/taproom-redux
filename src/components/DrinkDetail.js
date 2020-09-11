@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
 function DrinkDetail(props) {
-  const { drink, onClickingPint } = props;
+  const { drink, onClickingPint, onClickingPitcher } = props;
   return (
     <React.Fragment>
         <h1>{drink.name}</h1>
@@ -15,15 +14,16 @@ function DrinkDetail(props) {
         <p>{drink.description}</p>
         <p>{drink.quantity}</p>
         <Button variant="outline-dark" onClick={() => onClickingPint(drink.id)} block>Pint</Button>
-        <Button variant="outline-dark" block>Pitcher</Button>
-        <Button variant="outline-dark" block>Growler</Button>
+        <Button variant="outline-dark" onClick={() => onClickingPitcher(drink.id)}block>Pitcher</Button>
+        <Button variant="outline-dark" onClick={() => onClickingPitcher(drink.id)} block>Growler</Button>
     </React.Fragment>
   );
 }
 
 DrinkDetail.propTypes = {
   drink: PropTypes.object,
-  onClickingPint: PropTypes.func
+  onClickingPint: PropTypes.func,
+  onClickingPitcher: PropTypes.func
 }
 
 export default DrinkDetail;
