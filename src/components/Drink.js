@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 function Drink(props){
 
   const drink={
-    marginTop: 10,
+    borderRadius: 0,
     borderColor: "lightgray"
   }
   return (
