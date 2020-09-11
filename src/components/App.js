@@ -25,14 +25,10 @@ function App() {
       <div style={divCenter}>
         <Container fluid>
           <Row>
-            <Col>
-              <Header />
-            </Col>
+            <Header />
           </Row>
           <Row>
-          <Col>
-              <DrinkControl />
-            </Col>
+            <DrinkControl />
           </Row>
         </Container>
       </div>
