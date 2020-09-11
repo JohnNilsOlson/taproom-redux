@@ -9,25 +9,38 @@ class DrinkControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisible: false
+      formVisible: false,
+      masterDrinkList: []
     };
   }
 
+  handleNewDrink = (newDrink) => {
+    const newMasterDrinkList = this.state.masterDrinkList.concat(newDrink);
+    this.setState(
+      {
+        masterDrinkList: newMasterDrinkList, 
+        formVisible: false
+      }
+    );
+  }
+
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisible: !prevState.formVisible
-    }));
+    this.setState(prevState => (
+      {
+        formVisible: !prevState.formVisible
+      }
+    ));
   }
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisible) {
-      currentlyVisibleState = <NewDrinkForm />
+      currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleNewDrink} />
       buttonText = "Return to Tap List";
     } else {
-      currentlyVisibleState = <DrinkList />
-      buttonText = "Add new Tap";
+      currentlyVisibleState = <DrinkList drinkList={this.state.masterDrinkList}/>
+      buttonText = "Add New Tap";
     }
     return (
       <React.Fragment>

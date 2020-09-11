@@ -20,7 +20,7 @@ function Drink(props){
   return (
     <React.Fragment>
       <Row style={drink}>
-        <h3>{props.name} - {props.alcoholContent}</h3>
+        <h3>{props.name} - {props.alcoholContent}%</h3>
         <h5>{props.type}</h5>
         <h5>{props.brewer}</h5>
       </Row>
