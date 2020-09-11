@@ -1,21 +1,36 @@
 import React from 'react';
 import Header from "./Header";
+import DrinkControl from "./DrinkControl"
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from "react-bootstrap/Container"
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function App() {
 
-  const containerStyles = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
+  const divCenter = {
+    width: 600,
+    position: "fixed",
+    top: "15%",
+    left: "50%",
+    transform: "translate(-50%, -50%)"
   }
   return (
     <React.Fragment>
-      <Container style={containerStyles}>
-        <Header />
-      </Container>
+      <div style={divCenter}>
+        <Container fluid>
+          <Row>
+            <Col>
+              <Header />
+            </Col>
+          </Row>
+          <Row>
+          <Col>
+              <DrinkControl />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </React.Fragment>
   );
 }
