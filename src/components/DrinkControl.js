@@ -12,30 +12,7 @@ class DrinkControl extends React.Component {
     this.state = {
       formVisible: false,
       selectedDrink: null,
-      masterDrinkList: [
-        {
-          name: "Test",
-          type: "IPA",
-          brewer: "Test Brewery",
-          alcoholContent: 7.0,
-          description: "Blah blah blah.",
-          pintPrice: 1,
-          pitcherPrice: 3.50,
-          quantity: 124,
-          id: 1
-        },
-        {
-          name: "Test Two",
-          type: "Stout",
-          brewer: "Test Brewery",
-          alcoholContent: 8.0,
-          description: "Blah blah blah.",
-          pintPrice: 1,
-          pitcherPrice: 3.50,
-          quantity: 0,
-          id: 2
-        }
-      ]
+      masterDrinkList: []
     };
   }
 
