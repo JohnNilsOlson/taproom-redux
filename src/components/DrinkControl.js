@@ -12,9 +12,7 @@ class DrinkControl extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      selectedDrink: null,
-    };
+    this.state = {};
   }
 
   handleQuantityDecrement = (id, num) => {
@@ -38,8 +36,13 @@ class DrinkControl extends React.Component {
   }
 
   handleSelect = (id) => {
-    const selectedDrink = this.props.masterDrinkList[id];
-    this.setState({ selectedDrink: selectedDrink });
+    const { dispatch } = this.props;
+    const action = {
+      type: "SELECT_DRINK",
+      id: id
+    }
+    dispatch(action);
+    console.log(this.props)
   }
 
   handleNewDrink = (newDrink) => {
@@ -82,8 +85,8 @@ class DrinkControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     
-    if (this.state.selectedDrink != null) {
-      currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} onClickingPint={this.handleQuantityDecrement} onClickingPitcher={this.handleQuantityDecrement} />
+    if (this.props.selectedDrink != null) {
+      currentlyVisibleState = <DrinkDetail drink={this.props.selectedDrink} onClickingPint={this.handleQuantityDecrement} onClickingPitcher={this.handleQuantityDecrement} />
       buttonText = "Return to Tap List";
     } else if (this.props.formVisible) {
       currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleNewDrink} />

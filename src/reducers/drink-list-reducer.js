@@ -11,14 +11,14 @@ export default (state = {}, action) => {
         description: description,
         quantity: quantity,
         pintPrice: pintPrice,
-        pitcherPrice, pitcherPrice,
+        pitcherPrice: pitcherPrice,
         id: id
       }
     });
   case 'DELETE_DRINK':
-    const newState = { ...state };
-    delete newState[id];
-    return newState;
+    const deleteState = { ...state };
+    delete deleteState[id];
+    return deleteState;
   default:
     return state;
   }
