@@ -5,7 +5,7 @@ import Drink from "./Drink";
 function DrinkList(props) {
   return (
     <React.Fragment>
-        {props.drinkList.map((drink) =>
+        {Object.values(props.drinkList).map((drink) =>
           <Drink
             whenDrinkClicked = {props.onDrinkSelection}
             name={drink.name}
@@ -20,7 +20,7 @@ function DrinkList(props) {
 }
 
 DrinkList.propTypes = {
-  drinkList: PropTypes.array,
+  drinkList: PropTypes.object,
   onDrinkSelection: PropTypes.func
 }
 
