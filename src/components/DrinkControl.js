@@ -38,26 +38,6 @@ class DrinkControl extends React.Component {
     this.setState({ selectedDrink: drink });
   }
 
-  // handlePitcher = (id) => {
-  //   const { dispatch } = this.props;
-  //   const drink = this.props.masterDrinkList[id];
-  //   const { name, drinkType, brewery, description, alcoholContent, pintPrice, pitcherPrice, quantity } = drink;
-  //   const action = {
-  //     type: 'ADD_DRINK',
-  //     id: id,
-  //     name: name,
-  //     drinkType: drinkType,
-  //     brewery: brewery,
-  //     description: description,
-  //     alcoholContent: alcoholContent,
-  //     pintPrice: pintPrice,
-  //     pitcherPrice: pitcherPrice,
-  //     quantity: quantity - 4
-  //   }
-  //   dispatch(action);
-  //   this.setState({ selectedDrink: drink });
-  // }
-
   handleSelect = (id) => {
     const selectedDrink = this.props.masterDrinkList[id];
     this.setState({ selectedDrink: selectedDrink });
@@ -87,7 +67,7 @@ class DrinkControl extends React.Component {
   }
 
   handleClick = () => {
-    if (this.props.selectedDrink != null) {
+    if (this.state.selectedDrink != null) {
       this.setState({
         formVisible: false,
         selectedDrink: null
