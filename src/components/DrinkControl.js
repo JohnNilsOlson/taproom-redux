@@ -45,12 +45,8 @@ class DrinkControl extends React.Component {
   }
 
   handleSelect = (id) => {
-    const selectedDrink = this.props.masterDrinkList.filter(drink => drink.id === id)[0];
-    this.setState(
-      {
-        selectedDrink: selectedDrink
-      }
-    );
+    const selectedDrink = this.props.masterDrinkList[id];
+    this.setState({ selectedDrink: selectedDrink });
   }
 
   handleNewDrink = (newDrink) => {
@@ -75,7 +71,7 @@ class DrinkControl extends React.Component {
   }
 
   handleClick = () => {
-    if (this.state.selectedDrink != null) {
+    if (this.props.selectedDrink != null) {
       this.setState({
         formVisible: false,
         selectedDrink: null
