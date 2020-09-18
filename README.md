@@ -1,7 +1,7 @@
 # Taproom
 JohnNils Olson  
-September 11th, 2020 - Epicodus Week 17
-## A practice in using React.js
+September 18th, 2020 - Epicodus Week 18
+## A practice in using React.js with Redux
 ### Manage the availability of various drinks on tap in this virtual taproom!
 
 ## Technologies Used
@@ -10,6 +10,7 @@ September 11th, 2020 - Epicodus Week 17
 * Bootstrap
 * Javascript
 * React.js
+* Redux
 
 ## Specifications
 | Behavior | Input | Expected Output |
