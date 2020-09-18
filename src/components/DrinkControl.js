@@ -13,7 +13,6 @@ class DrinkControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisible: false,
       selectedDrink: null,
     };
   }
@@ -58,24 +57,24 @@ class DrinkControl extends React.Component {
       pintPrice: pintPrice,
       pitcherPrice: pitcherPrice
     }
-    dispatch(action);
-    this.setState(
-      {
-        formVisible: false
-      }
-    );
+    dispatch(action)
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
   }
 
   handleClick = () => {
     if (this.state.selectedDrink != null) {
       this.setState({
-        formVisible: false,
         selectedDrink: null
       });
     } else {
-      this.setState(prevState => ({
-        formVisible: !prevState.formVisible
-      }));
+      const { dispatch } = this.props;
+      const action = {
+        type: 'TOGGLE_FORM'
+      }
+      dispatch(action);
     }
   }
 
@@ -86,7 +85,7 @@ class DrinkControl extends React.Component {
     if (this.state.selectedDrink != null) {
       currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} onClickingPint={this.handleQuantityDecrement} onClickingPitcher={this.handleQuantityDecrement} />
       buttonText = "Return to Tap List";
-    } else if (this.state.formVisible) {
+    } else if (this.props.formVisible) {
       currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleNewDrink} />
       buttonText = "Return to Tap List";
     } else {
@@ -127,7 +126,8 @@ DrinkControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterDrinkList: state
+    masterDrinkList: state.masterDrinkList,
+    formVisible: state.formVisible
   }
 }
 
