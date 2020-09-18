@@ -57,8 +57,8 @@ function DrinkDetail(props) {
       <div style={details}>
         <h3>Order Up!</h3>
       </div>
-      <Button variant="outline-dark" style={button} onClick={() => onClickingPint(drink.id)} block>Pint ${drink.pintPrice.toFixed(2)}</Button>
-      <Button variant="outline-dark" style={button} onClick={() => onClickingPitcher(drink.id)} block>Pitcher ${drink.pitcherPrice.toFixed(2)}</Button>
+      <Button variant="outline-dark" style={button} onClick={() => onClickingPint(drink.id)} block>Pint ${parseInt(drink.pintPrice).toFixed(2)}</Button>
+      <Button variant="outline-dark" style={button} onClick={() => onClickingPitcher(drink.id)} block>Pitcher ${parseInt(drink.pitcherPrice).toFixed(2)}</Button>
     </React.Fragment>
   );
 }
