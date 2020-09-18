@@ -14,6 +14,27 @@ describe('drinkListReducer', () => {
     id: 1
   }
 
+  const currentState = {
+    1: {
+      name: 'Test Drink One',
+      drinkType: 'Test Type One',
+      brewer: 'Test Brewery One',
+      alcoholContent: 5.0,
+      description: 'Test Description',
+      quantity: 124,
+      id: 1
+    },
+    2 : {
+      name: 'Test Drink Two',
+      drinkType: 'Test Type Two',
+      brewer: 'Test Brewery Two',
+      alcoholContent: 6.0,
+      description: 'Test Description',
+      quantity: 124,
+      id: 2
+    }
+  }
+
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(drinkListReducer({}, {type: null })).toEqual({});
   });
@@ -40,6 +61,24 @@ describe('drinkListReducer', () => {
         quantity: quantity,
         id: id
       }
+    });
+  });
+
+  test('Should successfully delete a drink', () => {
+    action = {
+      type: 'DELETE_DRINK',
+      id: 1
+    };
+    expect(drinkListReducer(currentState, action)).toEqual({
+      2 : {
+        name: 'Test Drink Two',
+        drinkType: 'Test Type Two',
+        brewer: 'Test Brewery Two',
+        alcoholContent: 6.0,
+        description: 'Test Description',
+        quantity: 124,
+        id: 2
+      } 
     });
   });
 });
