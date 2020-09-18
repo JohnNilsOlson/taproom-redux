@@ -19,29 +19,43 @@ class DrinkControl extends React.Component {
   }
 
   handlePint = (id) => {
-    const drink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
-    const newDrink = {...drink, quantity: drink.quantity -1}
-    const newMasterDrinkList = this.state.masterDrinkList.map(function(drink) { return drink.id === id ? newDrink : drink; });
-    console.log(newMasterDrinkList);
-    this.setState(
-      {
-        masterDrinkList: newMasterDrinkList,
-        selectedDrink: drink
-      }
-    )
+    const { dispatch } = this.props;
+    const drink = this.props.masterDrinkList[id];
+    const { name, drinkType, brewery, description, alcoholContent, pintPrice, pitcherPrice, quantity } = drink;
+    const action = {
+      type: 'ADD_DRINK',
+      id: id,
+      name: name,
+      drinkType: drinkType,
+      brewery: brewery,
+      description: description,
+      alcoholContent: alcoholContent,
+      pintPrice: pintPrice,
+      pitcherPrice: pitcherPrice,
+      quantity: quantity - 1
+    }
+    dispatch(action);
+    this.setState({ selectedDrink: drink });
   }
 
   handlePitcher = (id) => {
-    const drink = this.state.masterDrinkList.filter(drink => drink.id === id)[0];
-    const newDrink = {...drink, quantity: drink.quantity -4}
-    const newMasterDrinkList = this.state.masterDrinkList.map(function(drink) { return drink.id === id ? newDrink : drink; });
-    console.log(newMasterDrinkList);
-    this.setState(
-      {
-        masterDrinkList: newMasterDrinkList,
-        selectedDrink: drink
-      }
-    )
+    const { dispatch } = this.props;
+    const drink = this.props.masterDrinkList[id];
+    const { name, drinkType, brewery, description, alcoholContent, pintPrice, pitcherPrice, quantity } = drink;
+    const action = {
+      type: 'ADD_DRINK',
+      id: id,
+      name: name,
+      drinkType: drinkType,
+      brewery: brewery,
+      description: description,
+      alcoholContent: alcoholContent,
+      pintPrice: pintPrice,
+      pitcherPrice: pitcherPrice,
+      quantity: quantity - 4
+    }
+    dispatch(action);
+    this.setState({ selectedDrink: drink });
   }
 
   handleSelect = (id) => {
