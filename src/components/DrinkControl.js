@@ -18,7 +18,7 @@ class DrinkControl extends React.Component {
     };
   }
 
-  handlePint = (id) => {
+  handleQuantityDecrement = (id, num) => {
     const { dispatch } = this.props;
     const drink = this.props.masterDrinkList[id];
     const { name, drinkType, brewery, description, alcoholContent, pintPrice, pitcherPrice, quantity } = drink;
@@ -32,36 +32,35 @@ class DrinkControl extends React.Component {
       alcoholContent: alcoholContent,
       pintPrice: pintPrice,
       pitcherPrice: pitcherPrice,
-      quantity: quantity - 1
+      quantity: quantity - num
     }
     dispatch(action);
     this.setState({ selectedDrink: drink });
   }
 
-  handlePitcher = (id) => {
-    const { dispatch } = this.props;
-    const drink = this.props.masterDrinkList[id];
-    const { name, drinkType, brewery, description, alcoholContent, pintPrice, pitcherPrice, quantity } = drink;
-    const action = {
-      type: 'ADD_DRINK',
-      id: id,
-      name: name,
-      drinkType: drinkType,
-      brewery: brewery,
-      description: description,
-      alcoholContent: alcoholContent,
-      pintPrice: pintPrice,
-      pitcherPrice: pitcherPrice,
-      quantity: quantity - 4
-    }
-    dispatch(action);
-    this.setState({ selectedDrink: drink });
-  }
+  // handlePitcher = (id) => {
+  //   const { dispatch } = this.props;
+  //   const drink = this.props.masterDrinkList[id];
+  //   const { name, drinkType, brewery, description, alcoholContent, pintPrice, pitcherPrice, quantity } = drink;
+  //   const action = {
+  //     type: 'ADD_DRINK',
+  //     id: id,
+  //     name: name,
+  //     drinkType: drinkType,
+  //     brewery: brewery,
+  //     description: description,
+  //     alcoholContent: alcoholContent,
+  //     pintPrice: pintPrice,
+  //     pitcherPrice: pitcherPrice,
+  //     quantity: quantity - 4
+  //   }
+  //   dispatch(action);
+  //   this.setState({ selectedDrink: drink });
+  // }
 
   handleSelect = (id) => {
     const selectedDrink = this.props.masterDrinkList[id];
     this.setState({ selectedDrink: selectedDrink });
-    console.log(selectedDrink);
   }
 
   handleNewDrink = (newDrink) => {
@@ -105,7 +104,7 @@ class DrinkControl extends React.Component {
     let buttonText = null;
     
     if (this.state.selectedDrink != null) {
-      currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} onClickingPint={this.handlePint} onClickingPitcher={this.handlePitcher} />
+      currentlyVisibleState = <DrinkDetail drink={this.state.selectedDrink} onClickingPint={this.handleQuantityDecrement} onClickingPitcher={this.handleQuantityDecrement} />
       buttonText = "Return to Tap List";
     } else if (this.state.formVisible) {
       currentlyVisibleState = <NewDrinkForm onNewDrinkCreation={this.handleNewDrink} />
