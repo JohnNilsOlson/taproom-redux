@@ -68,7 +68,7 @@ function NewDrinkForm(props){
           </Form.Group>
           <Form.Group controlId="pitcherPrice">
             <Form.Label>How Much for a Pitcher?</Form.Label>
-            <Form.Control type="number" placeholder="$0.00"></Form.Control>
+            <Form.Control type="decimal" placeholder="$0.00"></Form.Control>
           </Form.Group>
           <Button variant="outline-dark" style={button} type="submit" block>Add Tap</Button>
         </Form>

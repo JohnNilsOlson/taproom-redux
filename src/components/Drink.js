@@ -7,7 +7,10 @@ function Drink(props){
 
   const button={
     borderRadius: 0,
-    borderColor: "lightgray"
+    borderColor: "white",
+    width: 300,
+    height: 300,
+    margin: 0
   }
   return (
     <React.Fragment>

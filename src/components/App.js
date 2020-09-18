@@ -8,20 +8,17 @@ function App() {
 
   const center = {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    width: 600,
-    marginTop: 10,
-    marginBottom: 10
+    width: "90%",
+    margin: 10,
   }
 
   return (
     <React.Fragment>
-        <Container fluid style={center}>
-          <Header />
-          <DrinkControl />
-        </Container>
+      <Header />
+      <DrinkControl />
     </React.Fragment>
   );
 }
