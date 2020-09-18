@@ -1,4 +1,9 @@
 import rootReducer from '../../reducers/index';
+import { createStore } from 'redux';
+import formVisibleReducer from '../../reducers/form-visible-reducer';
+import drinkListReducer from '../../reducers/drink-list-reducer';
+
+let store = createStore(rootReducer);
 
 describe('rootReducer', () => {
 
@@ -7,5 +12,13 @@ describe('rootReducer', () => {
       masterDrinkList: {},
       formVisible: false
     });
+  });
+
+  test('Check that intital state of drinkListReducer matches root reducer', () => {
+    expect(store.getState().masterDrinkList).toEqual(drinkListReducer(undefined, { type: null }));
+  });
+
+  test('Check that intital state of formVisibleReducer matches root reducer', () => {
+    expect(store.getState().formVisible).toEqual(formVisibleReducer(undefined, { type: null }));
   });
 });
