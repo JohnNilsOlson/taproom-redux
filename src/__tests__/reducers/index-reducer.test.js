@@ -21,4 +21,29 @@ describe('rootReducer', () => {
   test('Check that intital state of formVisibleReducer matches root reducer', () => {
     expect(store.getState().formVisible).toEqual(formVisibleReducer(undefined, { type: null }));
   });
+
+  test('Check that initial state of drinkListReducer matches root reducer', () => {
+    const action = {
+      type: 'ADD_DRINK',
+      name: 'Test Drink',
+      drinkType: 'Test Type',
+      brewery: 'Test Brewery',
+      alcoholContent: 5.5,
+      description: 'Test',
+      quantity: 124,
+      pintPrice: 4,
+      pitcherPrice: 15,
+      id: 1
+    }
+    store.dispatch(action);
+    expect(store.getState().masterDrinkList).toEqual(drinkListReducer(undefined, action));
+  });
+
+  test('Check that initial state of formVisibleReducer matches root reducer', () => {
+    const action = {
+      type: 'TOGGLE_FORM'
+    }
+    store.dispatch(action);
+    expect(store.getState().formVisible).toEqual(formVisibleReducer(undefined, action));
+  });
 });
